@@ -76,3 +76,5 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+#ESTOU REALIZANDO TESTES COM O GIT FLOW !!!!!!!!!!!!!!!!!!!!!!!
