@@ -1,0 +1,9 @@
+#cache
+__pycache__/
+
+#VSCode
+launch.json
+
+#Python
+venv/
+

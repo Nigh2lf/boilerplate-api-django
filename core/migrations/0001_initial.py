@@ -3,6 +3,19 @@
 from django.db import migrations, models
 
 
+
+# Função para criar usuário admin padrão
+def create_admin_user(apps, schema_editor):
+    User = apps.get_model('core', 'User')
+    from django.contrib.auth.hashers import make_password
+    if not User.objects.filter(email='admin@admin.com').exists():
+        User.objects.create(
+            email='admin@admin.com',
+            password=make_password('admin'),
+            is_admin=True,
+            is_active=True
+        )
+
 class Migration(migrations.Migration):
 
     initial = True
@@ -32,4 +45,9 @@ class Migration(migrations.Migration):
                 'abstract': False,
             },
         ),
+        migrations.RunPython(
+            code=create_admin_user,
+            reverse_code=migrations.RunPython.noop
+        ),
     ]
+
