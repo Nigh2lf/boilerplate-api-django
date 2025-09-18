@@ -39,6 +39,14 @@ class Config(models.Model):
     
     
 class CrudModelConfig(models.Model):
+    TYPE_MENU = (
+        ('CONFIG', 'CONFIG'),
+        ('CRUD', 'CRUD'),
+        ('INSIDE WEB', 'INSIDE WEB'),
+        ('DASH', 'DASH'),
+    )
+    
+    type_menu = models.CharField(max_length=255, null=True, blank=True, choices=TYPE_MENU)
     target_model = models.CharField(max_length=150, unique=True)
     display_name = models.CharField(max_length=150, blank=True, default="")
     url_name     = models.CharField(max_length=150, blank=True, default="")  # Ex: "products"
@@ -75,6 +83,10 @@ class CrudFieldConfig(models.Model):
     include_in_retrieve = models.BooleanField(default=True)
     include_in_create = models.BooleanField(default=False)
     include_in_update = models.BooleanField(default=False)
+    prefix = models.CharField(max_length=10, blank=True, default="")
+    suffix = models.CharField(max_length=10, blank=True, default="")
+    thousand_separator = models.CharField(max_length=10, blank=True, default="")
+    decimal_marker = models.CharField(max_length=10, blank=True, default="")
     
 
     validators        = models.JSONField(default=list, blank=True)  # Ex: ["EmailValidator", "MaxLengthValidator"]
