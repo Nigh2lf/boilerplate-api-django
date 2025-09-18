@@ -120,10 +120,20 @@ def get_models(request):
 
     models = []
     label_apps = ['Token','TokenProxy','LogEntry','Permission','ContentType','Session','Group','Config','MenuOption']
+
     for model in apps.get_models():
-        print(model.__name__)
         if model.__name__ not in label_apps:
-            models.append(model.__name__)
-            
+            fields = []
+            for field in model._meta.get_fields():
+                # Apenas campos explícitos (não relacionamentos reversos ou campos auto-gerados)
+                if hasattr(field, 'get_internal_type') and not field.many_to_many and not field.one_to_many and not field.one_to_one:
+                    fields.append({
+                        'name': field.name,
+                        'type': field.get_internal_type()
+                    })
+            models.append({
+                'model': model.__name__,
+                'fields': fields
+            })
 
     return Response(models)
