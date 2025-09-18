@@ -7,3 +7,5 @@ launch.json
 #Python
 venv/
 
+#db
+*.sqlite3

@@ -9,6 +9,8 @@ import json
 from datetime import datetime, timedelta
 from django.db.models import Q, Count, Sum
 from rest_framework.response import Response
+
+from django.apps import apps
 from .models import *
 from .serializers import *
 from core.models import *
@@ -110,3 +112,18 @@ def update_config(request):
     else:
         return Response(config_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_models(request):
+    if request.user.is_admin == False:
+        return Response({"detail": "Você não tem permissão para acessar este recurso!"}, status=status.HTTP_400_BAD_REQUEST)
+
+    models = []
+    label_apps = ['Token','TokenProxy','LogEntry','Permission','ContentType','Session','Group','Config','MenuOption']
+    for model in apps.get_models():
+        print(model.__name__)
+        if model.__name__ not in label_apps:
+            models.append(model.__name__)
+            
+
+    return Response(models)

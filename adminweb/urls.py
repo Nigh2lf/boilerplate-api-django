@@ -13,5 +13,8 @@ urlpatterns = [
     #Config:
     path('get-config/', get_config),
     path('update-config/', update_config),
+    
+    #Models
+    path('get-models/', get_models),
    
 ]
