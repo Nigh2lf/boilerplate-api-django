@@ -46,13 +46,13 @@ class CrudModelConfig(models.Model):
     icon = models.TextField(blank=True, default="")  
     
     enable_list   = models.BooleanField(default=True)
-    enable_get    = models.BooleanField(default=True)
+    enable_retrieve = models.BooleanField(default=True)
     enable_create = models.BooleanField(default=False)
     enable_update = models.BooleanField(default=False)
     enable_delete = models.BooleanField(default=False)
 
     default_ordering = models.CharField(max_length=120, blank=True, default="")
-    search_fields    = models.JSONField(default=list, blank=True)   # ["name", "code"]
+    search_fields    = models.JSONField(default=list, blank=True)   # ["name", "code",'is_deleted']
     
     # Auditoria simples
     created_at = models.DateTimeField(auto_now_add=True)
@@ -68,11 +68,14 @@ class CrudFieldConfig(models.Model):
     field_name    = models.CharField(max_length=120)
     field_type    = models.CharField(max_length=80, blank=True, default="")  # ex: "CharField", 
     display_label = models.CharField(max_length=150, blank=True, default="")
+    lookup_url    = models.CharField(max_length=150, blank=True, default="")  
+    depends_on    =  models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     
     include_in_list   = models.BooleanField(default=False)
-    include_in_get    = models.BooleanField(default=True)
+    include_in_retrieve = models.BooleanField(default=True)
     include_in_create = models.BooleanField(default=False)
     include_in_update = models.BooleanField(default=False)
+    
 
     validators        = models.JSONField(default=list, blank=True)  # Ex: ["EmailValidator", "MaxLengthValidator"]
     
