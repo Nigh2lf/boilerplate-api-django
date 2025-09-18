@@ -14,7 +14,7 @@ urlpatterns = [
     path('get-config/', get_config),
     path('update-config/', update_config),
     
-    #Models
+    #New BoilerPlate
     path('get-models/', get_models),
    
 ]
