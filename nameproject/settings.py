@@ -152,14 +152,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AWS_STORAGE_BUCKET_NAME = ''
-AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3-sa-east-1.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_ACCESS_KEY_ID = ''
-AWS_SECRET_ACCESS_KEY = ''
+# AWS_STORAGE_BUCKET_NAME = ''
+# AWS_DEFAULT_ACL = 'public-read'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3-sa-east-1.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_ACCESS_KEY_ID = ''
+# AWS_SECRET_ACCESS_KEY = ''
 
-DEFAULT_FILE_STORAGE = 'nameproject.storage.MediaStorage'
+# DEFAULT_FILE_STORAGE = 'nameproject.storage.MediaStorage'
 
-AWS_LOCATION = 'static'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_LOCATION = 'static'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 

@@ -1,0 +1,2 @@
+- PERMISSIONAMENTO DE USUÁRIO
+- Docker para rodar 

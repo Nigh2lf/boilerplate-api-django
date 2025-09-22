@@ -10,17 +10,17 @@ class ConfiSerializer(serializers.ModelSerializer):
         read_only_fields = ('id',)
 
 
-class MenuOptionSerializer(serializers.ModelSerializer):
+# class MenuOptionSerializer(serializers.ModelSerializer):
     
-    class Meta:
-        model = MenuOption
-        fields = ('id', 'type_menu', 'name', 'icon_web', 'router_link', 'config_url',)
-        read_only_fields = ('id',)
+#     class Meta:
+#         model = MenuOption
+#         fields = ('id', 'type_menu', 'name', 'icon_web', 'router_link', 'config_url',)
+#         read_only_fields = ('id',)
 
 
-class CompleteMenuOptionSerializer(serializers.ModelSerializer):
+# class CompleteMenuOptionSerializer(serializers.ModelSerializer):
     
-    class Meta:
-        model = MenuOption
-        fields = '__all__'
-        read_only_fields = ('id',)
+#     class Meta:
+#         model = MenuOption
+#         fields = '__all__'
+#         read_only_fields = ('id',)
